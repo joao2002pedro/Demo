@@ -1,10 +1,9 @@
 package com.example.demo;
 
-import ch.qos.logback.core.net.server.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Id;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/cliente/v1")
@@ -20,11 +19,11 @@ public class Controller {
         Cliente clienteSaved = resposity.save(cliente);
         return clienteSaved;
     }
-    @GetMapping("/get")
+    @GetMapping("/{id}")
     @ResponseBody
-    public Cliente getClienteByUd(@RequestParam Long id)
+    public Optional<Cliente> getClienteById(@PathVariable Long id)
     {
-        Cliente clienteReturned = resposity.getById(id);
+        Optional<Cliente> clienteReturned = resposity.findById(id);
         return clienteReturned;
 
     }
