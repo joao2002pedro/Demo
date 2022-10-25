@@ -34,7 +34,7 @@ public class Controller {
     @GetMapping
     public List<Cliente> clienteList(){
         return resposity.findAll();
-        
+
     }
 
 }
