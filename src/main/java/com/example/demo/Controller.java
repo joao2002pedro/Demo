@@ -42,8 +42,8 @@ public class Controller
         return resposity.findAll();
     }
 
-    @PutMapping("/Atualize/{id})")
     //Atualiza ou coloca uma informação no lugar de outra
+     @PutMapping("/atualize/{id}")
     public String updateClienteById(@RequestBody ClienteDTO clienteDTO, @PathVariable Long id)
     {
         Optional<Cliente> velhoCliente = resposity.findById(id);
@@ -52,10 +52,10 @@ public class Controller
             Cliente cliente = velhoCliente.get();
             cliente.setEndereco(clienteDTO.getEndereco());
             resposity.save(cliente);
-            return "Cliente de ID" + cliente.getId() + "atualizado com sucesso";
+            return "Cliente de ID " + cliente.getId() + " atualizado com sucesso ";
         } else
         {
-            return "Cliente de ID " + id + "Não encontrado";
+            return "Cliente de ID " + id + " Não encontrado";
         }
 
     }
