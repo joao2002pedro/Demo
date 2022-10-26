@@ -51,6 +51,7 @@ public class Controller
         {
             Cliente cliente = velhoCliente.get();
             cliente.setEndereco(clienteDTO.getEndereco());
+            resposity.save(cliente);
             return "Cliente de ID" + cliente.getId() + "atualizado com sucesso";
         } else
         {
