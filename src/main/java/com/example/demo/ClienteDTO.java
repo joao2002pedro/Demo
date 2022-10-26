@@ -1,24 +1,17 @@
 package com.example.demo;
 
 public class ClienteDTO {
-    private String nome;
+
     private String endereco;
 
     public ClienteDTO() {
     }
 
-    public ClienteDTO(String nome, String endereco) {
-        this.nome = nome;
+    public ClienteDTO(String endereco) {
+
         this.endereco = endereco;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getEndereco() {
         return endereco;
