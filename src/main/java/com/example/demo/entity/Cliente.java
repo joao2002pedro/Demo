@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -14,11 +11,11 @@ public class Cliente
     private Long id;
     private String nome;
     private String endereco;
+    @OneToMany(cascade = CascadeType.ALL)
+    // Vai ter dois bancos de dados (Duas tabelas(Cliente e Produtos e vai ser um relacionamento, dizendo que o cliente vai ter uma lista de produtos)
     private List<Produto> produtos;
 
-
-    public Cliente(Long id, String nome, String endereco, List<Produto> produtos) {
-        this.id = id;
+    public Cliente(String nome, String endereco, List<Produto> produtos) {
         this.nome = nome;
         this.endereco = endereco;
         this.produtos = produtos;
