@@ -19,15 +19,17 @@ public class Produto {
         this.nome = nome;
         this.precoUnitario = precoUnitario;
         Double total = precoUnitario * quantidade;
-      if (precoTotal == total) {
+      if (precoTotal == total)
+      {
+          System.out.println("O calculo está correto !");
           this.precoTotal = precoTotal;
-      }else{
+      }else
+      {
+          System.out.println("O calculo não está correto , mas foi corrigido pela equipe de devs");
           this.precoTotal = total;
       }
-        //this.quantidade = quantidade;
-
+        this.quantidade = quantidade;
     }
-
     public Produto() {
     }
 
