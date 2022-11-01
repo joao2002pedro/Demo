@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Cliente;
 import com.example.demo.dto.ClienteDTO;
+import com.example.demo.entity.Produto;
 import com.example.demo.repository.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -18,10 +19,15 @@ public class Controller
     @Autowired
     Repository resposity;
     @PostMapping
-    public Cliente create(@RequestBody @Valid Cliente cliente)
-    {
-        Cliente clienteSaved = resposity.save(cliente);
-        return clienteSaved;
+    public Cliente create(@RequestBody @Valid Cliente cliente) {
+        for (Produto p : cliente.getProdutos()) {
+        Produto produto = new Produto(p.getNome(),p.getPrecoUnitario(),p.getPrecoTotal(),p.getQuantidade());
+        p = produto;
+
+
+        }
+            Cliente clienteSaved = resposity.save(cliente);
+            return clienteSaved;
     }
     @GetMapping("/{id}")
     @ResponseBody
