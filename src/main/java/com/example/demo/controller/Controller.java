@@ -22,7 +22,7 @@ public class Controller
     public Cliente create(@RequestBody @Valid Cliente cliente) {
         for (Produto p : cliente.getProdutos()) {
         Produto produto = new Produto(p.getNome(),p.getPrecoUnitario(),p.getPrecoTotal(),p.getQuantidade());
-        p.setPrecoTotal(produto.getPrecoTotal());
+        p.setPrecoTotal(p.getPrecoUnitario()*p.getQuantidade());
         }
             Cliente clienteSaved = resposity.save(cliente);
             return clienteSaved;
