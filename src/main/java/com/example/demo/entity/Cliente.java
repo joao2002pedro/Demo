@@ -1,6 +1,9 @@
 package com.example.demo.entity;
 
+import org.springframework.lang.NonNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -9,7 +12,9 @@ public class Cliente
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull(message = "O nome é obrigatório!")
     private String nome;
+    @NonNull
     private String endereco;
     @OneToMany(cascade = CascadeType.ALL)
     // Vai ter dois bancos de dados (Duas tabelas(Cliente e Produtos e vai ser um relacionamento, dizendo que o cliente vai ter uma lista de produtos)
