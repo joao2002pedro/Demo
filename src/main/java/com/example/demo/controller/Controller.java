@@ -11,20 +11,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/cliente/v1")
-
 public class Controller
 {
-
     @Autowired
     Repository resposity;
-
     @PostMapping
     public Cliente create(@RequestBody Cliente cliente)
     {
         Cliente clienteSaved = resposity.save(cliente);
         return clienteSaved;
     }
-
     @GetMapping("/{id}")
     @ResponseBody
     public Optional<Cliente> getClienteById(@PathVariable Long id)
@@ -32,13 +28,19 @@ public class Controller
         Optional<Cliente> clienteReturned = resposity.findById(id);
         return clienteReturned;
     }
+    @DeleteMapping("/{id}") //Deleta tal cliente atraves do id
+    public void deleteClienteById(@PathVariable Long id) {
+        try{
+            resposity.deleteById(id);
+        }catch(Exception e){
+            System.out.println("Exceção ocorreu!");
+            e.printStackTrace();
+        }
 
-    @DeleteMapping("/id)") //Deleta tal cliente atraves do id
-    public void deleteClienteById(@PathVariable Long id)
-    {
-        resposity.deleteById(id);
+        {
+            resposity.deleteById(id);
+        }
     }
-
     @GetMapping //Puxa todos os cliente
     public List<Cliente> clienteList()
     {
