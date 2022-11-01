@@ -19,8 +19,13 @@ public class Produto {
         this.nome = nome;
         this.precoUnitario = precoUnitario;
         Double total = precoUnitario * quantidade;
-        this.precoTotal = precoTotal;
-//        this.quantidade = quantidade;
+      if (precoTotal == total) {
+          this.precoTotal = precoTotal;
+      }else{
+          this.precoTotal = total;
+      }
+        //this.quantidade = quantidade;
+
     }
 
     public Produto() {
