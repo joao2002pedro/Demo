@@ -34,8 +34,8 @@ public class Controller
         try
         {
 
-         Optional<Cliente> cliente = Optional.of(resposity.getById(id);
-            if (cliente != null)
+         Optional<Cliente> cliente = Optional.of(resposity.getById(id));
+            if (cliente.isPresent())
             {
                 resposity.deleteById(id);
                 return "Cliente de " + id + "deletado com sucesso! ";
