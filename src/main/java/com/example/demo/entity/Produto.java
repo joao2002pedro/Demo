@@ -18,8 +18,9 @@ public class Produto {
     public Produto(String nome, Double precoUnitario, Double precoTotal, Integer quantidade) {
         this.nome = nome;
         this.precoUnitario = precoUnitario;
+        Double total = precoUnitario * quantidade;
         this.precoTotal = precoTotal;
-        this.quantidade = quantidade;
+//        this.quantidade = quantidade;
     }
 
     public Produto() {
