@@ -29,17 +29,27 @@ public class Controller
         return clienteReturned;
     }
     @DeleteMapping("/{id}") //Deleta tal cliente atraves do id
-    public void deleteClienteById(@PathVariable Long id) {
-        try{
-            resposity.deleteById(id);
-        }catch(Exception e){
-            System.out.println("Exceção ocorreu!");
+    public String deleteClienteById(@PathVariable Long id)
+    {
+        try
+        {
+
+         Optional<Cliente> cliente = Optional.of(resposity.getById(id);
+            if (cliente != null)
+            {
+                resposity.deleteById(id);
+                return "Cliente de " + id + "deletado com sucesso! ";
+            }else
+            {
+                throw new Exception("Cliente inexistente");   //throw significa jogar
+            }
+        }catch(Exception e)
+        {
             e.printStackTrace();
+            return "O cliente de " + id + " não existe para ser deletado! " +
+            "Por favor, entre em contado com o atendimento 696 969 696";
         }
 
-        {
-            resposity.deleteById(id);
-        }
     }
     @GetMapping //Puxa todos os cliente
     public List<Cliente> clienteList()
